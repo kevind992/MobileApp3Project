@@ -53,7 +53,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\NewBehaviourScript.cs" />
+     <Compile Include="Assets\_Scripts\NewPlayer.cs" />
+     <Compile Include="Assets\Gordo\Demo\Prefabs\DAChkBox\Scripts\DAChkBox.cs" />
+     <Compile Include="Assets\Gordo\Demo\Scripts\GordoDemo.cs" />
+     <Compile Include="Assets\Gordo\Prefabs\DALogo\Scripts\DALogo.cs" />
+     <Compile Include="Assets\Gordo\Prefabs\DASkeleton\Scripts\DALimb.cs" />
+     <Compile Include="Assets\Gordo\Prefabs\DASkeleton\Scripts\DASkeleton.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/kevin/Desktop/4th Year Software Development/Mobile Application Development 3/Project/MobileApp3Project/MobileAppProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
