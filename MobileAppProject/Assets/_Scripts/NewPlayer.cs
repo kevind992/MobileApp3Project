@@ -40,20 +40,28 @@ public class NewPlayer : MonoBehaviour {
         Flip(horizontal);
 
         HandleWave();
+
+        ResetValues();
     }
 
     private void HandleMovement(float horizontal)
     {
-        myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
+        if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Wave"))
+        {
+            myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
+        }
+
+        
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
     }
 
     private void HandleWave()
     {
-        if (wave)
+        if (wave && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Wave"))
         {
-            myAnimator.SetTrigger("hi");
+            myAnimator.SetTrigger("Wave");
+            myRigidbody.velocity = Vector2.zero;
         }
     }
 
@@ -77,5 +85,9 @@ public class NewPlayer : MonoBehaviour {
 
             transform.localScale = theScale;
         }
+    }
+    private void ResetValues()
+    {
+        wave = false;
     }
 }
