@@ -62,6 +62,8 @@ public class NewPlayer : MonoBehaviour {
 
         HandleWave();
 
+        HandleLayers();
+
         ResetValues();
     }
 
@@ -75,6 +77,7 @@ public class NewPlayer : MonoBehaviour {
         {
             isGrounded = false;
             myRigidbody.AddForce(new Vector2(0, jumpForce));
+            myAnimator.SetTrigger("Jump");
         }
 
         
@@ -139,5 +142,17 @@ public class NewPlayer : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    private void HandleLayers()
+    {
+        if (!isGrounded)
+        {
+            myAnimator.SetLayerWeight(1, 1);
+        }
+        else
+        {
+            myAnimator.SetLayerWeight(1, 0);
+        }
     }
 }
