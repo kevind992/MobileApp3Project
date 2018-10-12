@@ -15,6 +15,25 @@ public class NewPlayer : MonoBehaviour {
 
     private bool wave;
 
+    [SerializeField]
+    private Transform[] groundPoints;
+
+    [SerializeField]
+    private float groundRadius;
+
+    [SerializeField]
+    private LayerMask whatIsGround;
+
+    private bool isGrounded;
+
+    private bool jump;
+
+    [SerializeField]
+    private float jumpForce;
+
+    [SerializeField]
+    private bool airControl;
+
     // Use this for initialization
     void Start()
     {
@@ -35,6 +54,8 @@ public class NewPlayer : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal");
         Debug.Log(horizontal);
 
+        isGrounded = IsGrounded();
+
         HandleMovement(horizontal);
 
         Flip(horizontal);
@@ -46,9 +67,14 @@ public class NewPlayer : MonoBehaviour {
 
     private void HandleMovement(float horizontal)
     {
-        if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Wave"))
+        if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Wave") && (isGrounded || airControl))
         {
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
+        }
+        if (isGrounded && jump)
+        {
+            isGrounded = false;
+            myRigidbody.AddForce(new Vector2(0, jumpForce));
         }
 
         
@@ -67,6 +93,10 @@ public class NewPlayer : MonoBehaviour {
 
     private void HandleInput()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = true;
+        }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             wave = true;
@@ -89,5 +119,25 @@ public class NewPlayer : MonoBehaviour {
     private void ResetValues()
     {
         wave = false;
+        jump = false;
+    }
+
+    private bool IsGrounded()
+    {
+        if (myRigidbody.velocity.y <= 0)
+        {
+            foreach (Transform point in groundPoints)
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, groundRadius, whatIsGround);
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    if (colliders[i].gameObject != gameObject)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
