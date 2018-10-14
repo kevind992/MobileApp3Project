@@ -136,6 +136,7 @@ public class NewPlayer : MonoBehaviour {
                 {
                     if (colliders[i].gameObject != gameObject)
                     {
+                        myAnimator.ResetTrigger("Jump");
                         return true;
                     }
                 }
