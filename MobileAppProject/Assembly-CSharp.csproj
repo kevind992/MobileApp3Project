@@ -63,8 +63,10 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\CameraFollower.cs" />
     <Compile Include="Assets\_Scripts\ExitOnClick.cs" />
+    <Compile Include="Assets\_Scripts\LayerBehaviour.cs" />
     <Compile Include="Assets\_Scripts\LoadScreneOnClick.cs" />
     <Compile Include="Assets\_Scripts\NewPlayer.cs" />
+    <Compile Include="Assets\_Scripts\PlatformMovement.cs" />
     <Compile Include="Assets\Gordo\Demo\Prefabs\DAChkBox\Scripts\DAChkBox.cs" />
     <Compile Include="Assets\Gordo\Demo\Scripts\GordoDemo.cs" />
     <Compile Include="Assets\Gordo\Prefabs\DALogo\Scripts\DALogo.cs" />

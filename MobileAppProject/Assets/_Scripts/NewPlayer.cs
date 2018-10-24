@@ -69,6 +69,10 @@ public class NewPlayer : MonoBehaviour {
 
     private void HandleMovement(float horizontal)
     {
+        if (IsFalling)
+        {
+            gameObject.layer = 11;
+        }
         if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Wave") && (isGrounded || airControl))
         {
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
@@ -96,7 +100,7 @@ public class NewPlayer : MonoBehaviour {
 
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !IsFalling)
         {
             jump = true;
         }
@@ -154,6 +158,14 @@ public class NewPlayer : MonoBehaviour {
         else
         {
             myAnimator.SetLayerWeight(1, 0);
+        }
+    }
+
+    public bool IsFalling
+    {
+        get
+        {
+            return myRigidbody.velocity.y < 0;
         }
     }
 }
