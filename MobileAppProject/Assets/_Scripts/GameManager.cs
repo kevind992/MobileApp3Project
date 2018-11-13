@@ -12,6 +12,24 @@ public class GameManager : MonoBehaviour {
 
     private int collected;
 
+    [SerializeField]
+    private float healthValue;
+
+    [SerializeField]
+    private Image content;
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        HandleHealthBar();
+    }
+
     public static GameManager Instance
     {
         get
@@ -39,14 +57,21 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public float HealthValue
+    {
+        get
+        {
+            return healthValue;
+        }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        set
+        {
+            healthValue = value;
+        }
+    }
+
+    private void HandleHealthBar()
+    {
+        content.fillAmount = HealthValue;
+    }
 }

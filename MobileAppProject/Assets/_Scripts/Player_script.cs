@@ -128,6 +128,24 @@ public class Player_script : MonoBehaviour {
         else if(collectable.gameObject.tag == "Bad-Food")
         {
             GameManager.Instance.Collected -= 100;
+
+            if(GameManager.Instance.HealthValue == 1F)
+            {
+                GameManager.Instance.HealthValue = 0.75F;
+            }
+            else if(GameManager.Instance.HealthValue == 0.75F)
+            {
+                GameManager.Instance.HealthValue = 0.50F;
+            }
+            else if(GameManager.Instance.HealthValue == 0.50F)
+            {
+                GameManager.Instance.HealthValue = 0.25F;
+            }
+            else
+            {
+                GameManager.Instance.HealthValue = 0F;
+            }
+
             Destroy(collectable.gameObject);
         }
     }
