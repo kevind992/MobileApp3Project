@@ -149,4 +149,12 @@ public class Player_script : MonoBehaviour {
             Destroy(collectable.gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Fall_Detector")
+        {
+            // What will happen here 
+        }
+    }
 }

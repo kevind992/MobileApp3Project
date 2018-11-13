@@ -7,6 +7,8 @@ TagManager:
   - DARig
   - Good-Food
   - Bad-Food
+  - Fall_Detector
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\CameraFollower.cs" />
+    <Compile Include="Assets\_Scripts\CheckpointManager.cs" />
     <Compile Include="Assets\_Scripts\ExitOnClick.cs" />
     <Compile Include="Assets\_Scripts\GameManager.cs" />
     <Compile Include="Assets\_Scripts\LayerBehaviour.cs" />
