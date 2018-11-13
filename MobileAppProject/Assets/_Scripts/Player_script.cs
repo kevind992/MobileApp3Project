@@ -117,4 +117,18 @@ public class Player_script : MonoBehaviour {
     {
         jump = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collectable)
+    {
+        if(collectable.gameObject.tag == "Good-Food")
+        {
+            GameManager.Instance.Collected += 100;
+            Destroy(collectable.gameObject);
+        }
+        else if(collectable.gameObject.tag == "Bad-Food")
+        {
+            GameManager.Instance.Collected -= 100;
+            Destroy(collectable.gameObject);
+        }
+    }
 }

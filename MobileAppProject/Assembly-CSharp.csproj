@@ -61,8 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\BarScript.cs" />
     <Compile Include="Assets\_Scripts\CameraFollower.cs" />
     <Compile Include="Assets\_Scripts\ExitOnClick.cs" />
+    <Compile Include="Assets\_Scripts\GameManager.cs" />
     <Compile Include="Assets\_Scripts\LayerBehaviour.cs" />
     <Compile Include="Assets\_Scripts\LoadScreneOnClick.cs" />
     <Compile Include="Assets\_Scripts\PlatformMovement.cs" />
