@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player_script : MonoBehaviour {
 
     private Rigidbody2D myRigidbody;
-
     private Animator animator;
 
     [SerializeField]
@@ -122,7 +121,16 @@ public class Player_script : MonoBehaviour {
     {
         if(collectable.gameObject.tag == "Good-Food")
         {
-            GameManager.Instance.Collected += 100;
+            if(GameManager.Instance.HealthValue < 1F)
+            {
+                GameManager.Instance.Collected += 100;
+                GameManager.Instance.HealthValue += 0.25F;
+            }
+            else
+            {
+                GameManager.Instance.Collected += 100;
+            }
+            
             Destroy(collectable.gameObject);
         }
         else if(collectable.gameObject.tag == "Bad-Food")
@@ -144,8 +152,11 @@ public class Player_script : MonoBehaviour {
             else
             {
                 GameManager.Instance.HealthValue = 0F;
-            }
+                GameManager.Instance.Respawn();
+                Destroy(GameManager.Instance.Lives[GameManager.Instance.RemainingLives]);
+                GameManager.Instance.RemainingLives++;
 
+            }
             Destroy(collectable.gameObject);
         }
     }
@@ -154,7 +165,13 @@ public class Player_script : MonoBehaviour {
     {
         if(collision.tag == "Fall_Detector")
         {
-            // What will happen here 
+            GameManager.Instance.Respawn();
+            Destroy(GameManager.Instance.Lives[GameManager.Instance.RemainingLives]);
+            GameManager.Instance.RemainingLives++;
+        }
+        if(collision.tag == "Checkpoint")
+        {
+            GameManager.Instance.RespawnPoint = collision.transform.position;
         }
     }
 }

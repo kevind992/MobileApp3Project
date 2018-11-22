@@ -65,8 +65,10 @@
     <Compile Include="Assets\_Scripts\CheckpointManager.cs" />
     <Compile Include="Assets\_Scripts\ExitOnClick.cs" />
     <Compile Include="Assets\_Scripts\GameManager.cs" />
+    <Compile Include="Assets\_Scripts\GameOverScript.cs" />
     <Compile Include="Assets\_Scripts\LayerBehaviour.cs" />
     <Compile Include="Assets\_Scripts\LoadScreneOnClick.cs" />
+    <Compile Include="Assets\_Scripts\PauseMenu.cs" />
     <Compile Include="Assets\_Scripts\PlatformMovement.cs" />
     <Compile Include="Assets\_Scripts\Player_script.cs" />
     <Reference Include="UnityEditor.StandardEvents">
