@@ -36,6 +36,7 @@ public class Player_script : MonoBehaviour {
         direction = true;
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
     }
 
     private void Update()
@@ -135,8 +136,15 @@ public class Player_script : MonoBehaviour {
         }
         else if(collectable.gameObject.tag == "Bad-Food")
         {
-            GameManager.Instance.Collected -= 100;
-
+            if(GameManager.Instance.Collected <= 0)
+            {
+                Debug.Log("Not Collecting");
+            }
+            else
+            {
+                GameManager.Instance.Collected -= 100;
+            }
+            
             if(GameManager.Instance.HealthValue == 1F)
             {
                 GameManager.Instance.HealthValue = 0.75F;
@@ -151,11 +159,8 @@ public class Player_script : MonoBehaviour {
             }
             else
             {
-                GameManager.Instance.HealthValue = 0F;
                 GameManager.Instance.Respawn();
-                Destroy(GameManager.Instance.Lives[GameManager.Instance.RemainingLives]);
-                GameManager.Instance.RemainingLives++;
-
+                GameManager.Instance.HealthValue = 1f;
             }
             Destroy(collectable.gameObject);
         }
@@ -168,10 +173,17 @@ public class Player_script : MonoBehaviour {
             GameManager.Instance.Respawn();
             Destroy(GameManager.Instance.Lives[GameManager.Instance.RemainingLives]);
             GameManager.Instance.RemainingLives++;
+            
         }
         if(collision.tag == "Checkpoint")
         {
             GameManager.Instance.RespawnPoint = collision.transform.position;
+        }
+        if (collision.tag == "Finish")
+        {
+            Debug.Log("Level Finished..");
+            GameManager.Instance.Level += 1;
+            GameManager.Instance.Complete = true;
         }
     }
 }

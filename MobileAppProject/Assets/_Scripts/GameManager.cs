@@ -6,17 +6,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     private static GameManager instance;
-
     private const int LIVES = 3;
-
     [SerializeField]
     private Text score;
-
     private int collected;
-
     [SerializeField]
     private float respawnDelay;
-
     [SerializeField]
     private Vector3 respawnPoint;
 
@@ -25,14 +20,19 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField]
     private Image content;
-
     [SerializeField]
     private Image[] lives;
+
+    private int level;
 
     private int remainingLives = 0;
 
     [SerializeField]
     private Player_script player;
+
+    private bool complete;
+
+    
 
     // Use this for initialization
     void Start()
@@ -153,6 +153,32 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public int Level
+    {
+        get
+        {
+            return level;
+        }
+
+        set
+        {
+            level = value;
+        }
+    }
+
+    public bool Complete
+    {
+        get
+        {
+            return complete;
+        }
+
+        set
+        {
+            complete = value;
+        }
+    }
+
     private void HandleHealthBar()
     {
         content.fillAmount = HealthValue;
@@ -182,5 +208,6 @@ public class GameManager : MonoBehaviour {
     {
         GameOverScript.gameOver = false;
         Time.timeScale = 1f;
+        healthValue = 1f;
     }
 }

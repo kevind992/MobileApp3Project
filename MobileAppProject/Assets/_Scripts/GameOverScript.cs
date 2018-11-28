@@ -41,4 +41,15 @@ public class GameOverScript : MonoBehaviour {
         popup.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
+    public void NextLevel()
+    {
+        if (GameManager.Instance.Level == 1)
+        {
+            SceneManager.LoadScene("LevelTwoScene");
+        }
+        else
+        {
+            Debug.Log("You have completed all the levels..");
+        }
+    }
 }

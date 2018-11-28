@@ -45,11 +45,5 @@ public class PlatformMovement : MonoBehaviour
     {
         nexPosition = nexPosition != posA ? posA : posB;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.layer = 10;
-        }
-    }
+    
 }
