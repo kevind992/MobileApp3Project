@@ -11,9 +11,15 @@ public class GameOverScript : MonoBehaviour {
     private GameObject popup;
     [SerializeField]
     private GameObject pauseButton;
-	
-	// Update is called once per frame
-	void Update () {
+
+    LoadLevelController loadLevel;
+
+    void Start()
+    {
+        loadLevel = new LoadLevelController();
+    }
+    // Update is called once per frame
+    void Update () {
         if (gameOver)
         {
             GameOverPopUp();
@@ -33,7 +39,8 @@ public class GameOverScript : MonoBehaviour {
         Time.timeScale = 1f;
         popup.SetActive(false);
         pauseButton.SetActive(true);
-        SceneManager.LoadScene("LevelOneScene");
+        loadLevel.ChangeLevel();
+        GameManager.Instance.ResetValues();
     }
     public void Exit()
     {
@@ -43,13 +50,6 @@ public class GameOverScript : MonoBehaviour {
     }
     public void NextLevel()
     {
-        if (GameManager.Instance.Level == 1)
-        {
-            SceneManager.LoadScene("LevelTwoScene");
-        }
-        else
-        {
-            Debug.Log("You have completed all the levels..");
-        }
+        loadLevel.ChangeLevel();
     }
 }

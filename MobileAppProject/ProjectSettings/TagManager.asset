@@ -9,6 +9,8 @@ TagManager:
   - Bad-Food
   - Fall_Detector
   - Checkpoint
+  - level1
+  - level2
   layers:
   - Default
   - TransparentFX
@@ -48,6 +50,12 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1851782345
+    locked: 0
+  - name: Water
+    uniqueID: 4034917797
+    locked: 0
+  - name: Platforms
+    uniqueID: 1187560861
     locked: 0
   - name: Player
     uniqueID: 3599099273

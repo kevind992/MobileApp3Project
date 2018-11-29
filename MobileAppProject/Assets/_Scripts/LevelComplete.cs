@@ -10,9 +10,22 @@ public class LevelComplete : MonoBehaviour {
     private GameObject popup;
     [SerializeField]
     private GameObject pauseButton;
+    [SerializeField]
+    private GameObject finishPopup;
+
 
     [SerializeField]
-    private Text score;
+    private Text score1;
+
+    [SerializeField]
+    private Text score2;
+
+    LoadLevelController loadLevel;
+
+    void Start()
+    {
+        loadLevel = new LoadLevelController();   
+    }
 
     // Update is called once per frame
     void Update () {
@@ -23,15 +36,39 @@ public class LevelComplete : MonoBehaviour {
 	}
     void ShowPopUp()
     {
-        popup.SetActive(true);
-        pauseButton.SetActive(false);
-        Time.timeScale = 0f;
+        
+        if(GameManager.Instance.CurrLevel == 1)
+        {
+            popup.SetActive(true);
+            pauseButton.SetActive(false);
+            Time.timeScale = 0f;
 
-        ShowScore();
+            ShowScore();
+        }
+        else
+        {
+            finishPopup.SetActive(true);
+            pauseButton.SetActive(false);
+            Time.timeScale = 0f;
+
+            ShowScore2();
+        }
     }
     public void NextLevel()
     {
-        SceneManager.LoadScene("LevelTwoScene");
+   
+        GameManager.Instance.CurrLevel += 1;
+
+        int score = PlayerPrefs.GetInt("score1");
+
+        if(GameManager.Instance.Collected > score)
+        {
+            PlayerPrefs.SetInt("score1", GameManager.Instance.Collected);
+        }
+        
+        PlayerPrefs.SetInt("level", GameManager.Instance.CurrLevel);
+
+        loadLevel.ChangeLevel();
     }
     public void Exit()
     {
@@ -40,10 +77,14 @@ public class LevelComplete : MonoBehaviour {
     }
     public void Retry()
     {
-        SceneManager.LoadScene("LevelOneScene");
+        loadLevel.ChangeLevel();
     }
     private void ShowScore()
     {
-        score.text = "Score: " + GameManager.Instance.Collected.ToString();
+        score1.text = "Score: " + GameManager.Instance.Collected.ToString();
+    }
+    private void ShowScore2()
+    {
+        score2.text = "Score: " + GameManager.Instance.Collected.ToString();
     }
 }

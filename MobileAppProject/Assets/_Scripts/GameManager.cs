@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
-    private static GameManager instance;
-    private const int LIVES = 3;
+    // === Serializable Variables ===
+    [SerializeField]
+    private Player_script player;
     [SerializeField]
     private Text score;
     private int collected;
@@ -14,31 +16,29 @@ public class GameManager : MonoBehaviour {
     private float respawnDelay;
     [SerializeField]
     private Vector3 respawnPoint;
-
     [SerializeField]
     private float healthValue;
-
     [SerializeField]
     private Image content;
     [SerializeField]
     private Image[] lives;
 
+    // === Private Variables ===
+    private static GameManager instance;
     private int level;
-
     private int remainingLives = 0;
-
-    [SerializeField]
-    private Player_script player;
-
+    private int currLevel;
+    private int currLoad;
     private bool complete;
 
-    
 
     // Use this for initialization
     void Start()
     {
         player = FindObjectOfType<Player_script>();
         ResetValues();
+        currLevel = 1;
+        currLoad = PlayerPrefs.GetInt("level");
     }
 
     // Update is called once per frame
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = FindObjectOfType<GameManager>();
             }
@@ -179,6 +179,33 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public int CurrLevel
+    {
+        get
+        {
+            return currLevel;
+        }
+
+        set
+        {
+            currLevel = value;
+
+        }
+    }
+
+    public int CurrLoad
+    {
+        get
+        {
+            return currLoad;
+        }
+
+        set
+        {
+            currLoad = value;
+        }
+    }
+
     private void HandleHealthBar()
     {
         content.fillAmount = HealthValue;
@@ -190,7 +217,7 @@ public class GameManager : MonoBehaviour {
     }
     private void HandleLives()
     {
-        if(lives[2] == null)
+        if (lives[2] == null)
         {
             Debug.Log("Lives is NULL");
             GameOverScript.gameOver = true;
@@ -204,10 +231,12 @@ public class GameManager : MonoBehaviour {
         player.transform.position = GameManager.instance.RespawnPoint;
         player.gameObject.SetActive(true);
     }
-    private void ResetValues()
+    public void ResetValues()
     {
         GameOverScript.gameOver = false;
         Time.timeScale = 1f;
         healthValue = 1f;
+        remainingLives = 0;
+
     }
 }

@@ -68,7 +68,9 @@
     <Compile Include="Assets\_Scripts\GameOverScript.cs" />
     <Compile Include="Assets\_Scripts\LayerBehaviour.cs" />
     <Compile Include="Assets\_Scripts\LevelComplete.cs" />
+    <Compile Include="Assets\_Scripts\LoadLevelController.cs" />
     <Compile Include="Assets\_Scripts\LoadScreneOnClick.cs" />
+    <Compile Include="Assets\_Scripts\MainMenuController.cs" />
     <Compile Include="Assets\_Scripts\PauseMenu.cs" />
     <Compile Include="Assets\_Scripts\PlatformMovement.cs" />
     <Compile Include="Assets\_Scripts\Player_script.cs" />

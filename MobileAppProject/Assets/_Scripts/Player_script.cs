@@ -131,7 +131,6 @@ public class Player_script : MonoBehaviour {
             {
                 GameManager.Instance.Collected += 100;
             }
-            
             Destroy(collectable.gameObject);
         }
         else if(collectable.gameObject.tag == "Bad-Food")
@@ -164,6 +163,7 @@ public class Player_script : MonoBehaviour {
             }
             Destroy(collectable.gameObject);
         }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -184,6 +184,16 @@ public class Player_script : MonoBehaviour {
             Debug.Log("Level Finished..");
             GameManager.Instance.Level += 1;
             GameManager.Instance.Complete = true;
+        }
+        if (collision.tag == "level1")
+        {
+            GameManager.Instance.CurrLevel = 1;
+            Debug.Log(GameManager.Instance.CurrLevel);
+        }
+        if (collision.tag == "level2")
+        {
+            GameManager.Instance.CurrLevel = 2;
+            Debug.Log(GameManager.Instance.CurrLevel);
         }
     }
 }
