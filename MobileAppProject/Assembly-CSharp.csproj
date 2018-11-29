@@ -74,6 +74,7 @@
     <Compile Include="Assets\_Scripts\PauseMenu.cs" />
     <Compile Include="Assets\_Scripts\PlatformMovement.cs" />
     <Compile Include="Assets\_Scripts\Player_script.cs" />
+    <Compile Include="Assets\_Scripts\SoundController.cs" />
     <Compile Include="Assets\_Scripts\TimerManager.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Kevin Delassus/Desktop/4th Year Software Development/Mobile Application Development 3/Project/MobileApp3Project/MobileAppProject/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

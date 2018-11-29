@@ -51,6 +51,8 @@ public class LevelComplete : MonoBehaviour {
             pauseButton.SetActive(false);
             Time.timeScale = 0f;
 
+            CheckScore();
+
             ShowScore2();
         }
     }
@@ -69,6 +71,15 @@ public class LevelComplete : MonoBehaviour {
         PlayerPrefs.SetInt("level", GameManager.Instance.CurrLevel);
 
         loadLevel.ChangeLevel();
+    }
+    private void CheckScore()
+    {
+        int checkScore = PlayerPrefs.GetInt("score2");
+
+        if(checkScore < GameManager.Instance.Collected)
+        {
+            PlayerPrefs.SetInt("score2", GameManager.Instance.Collected);
+        }
     }
     public void Exit()
     {

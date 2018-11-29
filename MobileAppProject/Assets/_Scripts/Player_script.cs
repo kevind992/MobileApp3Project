@@ -31,8 +31,15 @@ public class Player_script : MonoBehaviour {
     [SerializeField]
     private float jumpForce;
 
+    [SerializeField]
+    private AudioClip eatClip;
+
+    private SoundController soundController;
+
     private void Start()
     {
+        soundController = SoundController.FindSoundController();
+
         direction = true;
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -122,7 +129,9 @@ public class Player_script : MonoBehaviour {
     {
         if(collectable.gameObject.tag == "Good-Food")
         {
-            if(GameManager.Instance.HealthValue < 1F)
+            PlayClip(eatClip);
+
+            if (GameManager.Instance.HealthValue < 1F)
             {
                 GameManager.Instance.Collected += 100;
                 GameManager.Instance.HealthValue += 0.25F;
@@ -135,7 +144,9 @@ public class Player_script : MonoBehaviour {
         }
         else if(collectable.gameObject.tag == "Bad-Food")
         {
-            if(GameManager.Instance.Collected <= 0)
+            PlayClip(eatClip);
+
+            if (GameManager.Instance.Collected <= 0)
             {
                 Debug.Log("Not Collecting");
             }
@@ -194,6 +205,13 @@ public class Player_script : MonoBehaviour {
         {
             GameManager.Instance.CurrLevel = 2;
             Debug.Log(GameManager.Instance.CurrLevel);
+        }
+    }
+    private void PlayClip(AudioClip clip)
+    {
+        if (soundController)
+        {
+            soundController.PlayOneShot(clip);
         }
     }
 }

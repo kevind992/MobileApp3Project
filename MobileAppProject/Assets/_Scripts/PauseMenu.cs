@@ -44,7 +44,6 @@ public class PauseMenu : MonoBehaviour {
 
     public void Save()
     {
-        PlayerPrefs.SetInt("score", GameManager.Instance.Collected);
         PlayerPrefs.SetInt("level",GameManager.Instance.CurrLevel);
     }
 

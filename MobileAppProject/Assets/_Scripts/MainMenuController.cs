@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuController : MonoBehaviour {
+public class MainMenuController : MonoBehaviour
+{
 
     [SerializeField]
     private Text hsLevel1;
@@ -12,25 +13,18 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField]
     private Text hsLevel2;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField]
+    Toggle tog;
 
     public void Load()
     {
         int level = PlayerPrefs.GetInt("level");
 
-        if(level == 1)
+        if (level == 1)
         {
             SceneManager.LoadScene("LevelOneScene");
         }
-        else if(level == 2)
+        else if (level == 2)
         {
             SceneManager.LoadScene("LevelTwoScene");
         }
@@ -48,7 +42,7 @@ public class MainMenuController : MonoBehaviour {
         int level1 = PlayerPrefs.GetInt("score1");
         int level2 = PlayerPrefs.GetInt("score2");
 
-        if(level1 != 0)
+        if (level1 != 0)
         {
             hsLevel1.text = "Level 1 Highscore: " + level1.ToString();
         }
@@ -65,4 +59,35 @@ public class MainMenuController : MonoBehaviour {
             hsLevel2.text = "Level 2 Highscore: 0";
         }
     }
+
+    public void CheckToggle()
+    {
+        string check = PlayerPrefs.GetString("sound");
+
+        if (check.Equals("soundon"))
+        {
+            tog.isOn = true;
+        }
+        else
+        {
+            tog.isOn = false;
+        }
+    }
+
+
+    public void Toggle_Changed(bool isChanged)
+    {
+        if (isChanged)
+        {
+            PlayerPrefs.SetString("sound", "soundon");
+            Debug.Log("Sound is on..");
+        }
+        else
+        {
+            PlayerPrefs.SetString("sound", "soundoff");
+            Debug.Log("Sound is off..");
+        }
+    }
 }
+
+    
