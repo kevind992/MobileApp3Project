@@ -8,6 +8,9 @@ public class MainMenuController : MonoBehaviour
 {
 
     [SerializeField]
+    private GameObject welcomeMessage;
+
+    [SerializeField]
     private Text hsLevel1;
 
     [SerializeField]
@@ -15,6 +18,18 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField]
     Toggle tog;
+
+    private string firstPlay = "true";
+
+    void Start()
+    {
+        firstPlay = PlayerPrefs.GetString("played");
+        if (firstPlay.Equals("true"))
+        {
+            PlayerPrefs.SetString("played", "false");
+            StartCoroutine("Display");
+        }
+    }
 
     public void Load()
     {
@@ -33,6 +48,20 @@ public class MainMenuController : MonoBehaviour
             Debug.Log("No Level Saved..");
         }
     }
+    private IEnumerator Display()
+    {
+        yield return new WaitForSeconds(05);
+        OpenFirstTimePlay();
+    }
+    public void OpenFirstTimePlay()
+    {
+        welcomeMessage.SetActive(true);
+    }
+    public void CloseFirstTimePlay()
+    {
+        welcomeMessage.SetActive(false);
+    }
+
     public void NewGame()
     {
         SceneManager.LoadScene("LevelOneScene");
