@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player_script>();
+        // Resets the main game settings at the start of every instance being created.
         ResetValues();
         currLevel = 1;
         currLoad = PlayerPrefs.GetInt("level");
@@ -44,10 +45,59 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Listening for updates for Health bar and lives
         HandleHealthBar();
         HandleLives();
     }
+    // function to handle health bar
+    private void HandleHealthBar()
+    {
+        content.fillAmount = HealthValue;
+    }
+    // Function to handel Respawning
+    public void Respawn()
+    {
+        // Starting the Coroutine
+        StartCoroutine("RespawnCoroutine");
+    }
+    // Function for checking player lives
+    private void HandleLives()
+    {
+        if (lives[2] == null)
+        {
+            Debug.Log("Lives is NULL");
+            // if player has no more lives end game
+            GameOverScript.gameOver = true;
 
+        }
+    }
+    // Coroutine for managing respawing
+    // Put 1 second delay to give player time to gather themselves
+    // delay is set in the unity properities
+    private IEnumerator RespawnCoroutine()
+    {
+        // de-activing player
+        player.gameObject.SetActive(false);
+        // Starting delay
+        yield return new WaitForSeconds(RespawnDelay);
+        // Setting respawn point
+        player.transform.position = GameManager.instance.RespawnPoint;
+        // activing player
+        player.gameObject.SetActive(true);
+        // Setting health to full
+        healthValue = 1f;
+    }
+    // Resetting values
+    public void ResetValues()
+    {
+        GameOverScript.gameOver = false;
+        Time.timeScale = 1f;
+        healthValue = 1f;
+        remainingLives = 0;
+
+    }
+
+    // === Getters and Setters ===
     public static GameManager Instance
     {
         get
@@ -206,38 +256,4 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void HandleHealthBar()
-    {
-        content.fillAmount = HealthValue;
-    }
-    public void Respawn()
-    {
-        StartCoroutine("RespawnCoroutine");
-
-    }
-    private void HandleLives()
-    {
-        if (lives[2] == null)
-        {
-            Debug.Log("Lives is NULL");
-            GameOverScript.gameOver = true;
-
-        }
-    }
-    private IEnumerator RespawnCoroutine()
-    {
-        player.gameObject.SetActive(false);
-        yield return new WaitForSeconds(RespawnDelay);
-        player.transform.position = GameManager.instance.RespawnPoint;
-        player.gameObject.SetActive(true);
-        healthValue = 1f;
-    }
-    public void ResetValues()
-    {
-        GameOverScript.gameOver = false;
-        Time.timeScale = 1f;
-        healthValue = 1f;
-        remainingLives = 0;
-
-    }
 }

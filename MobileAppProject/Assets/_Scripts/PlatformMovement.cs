@@ -49,12 +49,7 @@ public class PlatformMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision Detected..");
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("FLoating...");
-            collision.collider.transform.SetParent(transform);
-        }
+       
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

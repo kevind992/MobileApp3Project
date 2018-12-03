@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utilities;
 
 public class LevelComplete : MonoBehaviour {
 
+    // Getting an instance of the popup panel, pause button panel and finish popup
     [SerializeField]
     private GameObject popup;
     [SerializeField]
@@ -13,7 +15,7 @@ public class LevelComplete : MonoBehaviour {
     [SerializeField]
     private GameObject finishPopup;
 
-
+    // Score Text boxes
     [SerializeField]
     private Text score1;
 
@@ -31,12 +33,14 @@ public class LevelComplete : MonoBehaviour {
     void Update () {
         if (GameManager.Instance.Complete)
         {
+            // if level is complete show popup
             ShowPopUp();
         }
 	}
+    // function to manage pop up
     void ShowPopUp()
-    {
-        
+    {   
+        // if first level
         if(GameManager.Instance.CurrLevel == 1)
         {
             popup.SetActive(true);
@@ -45,6 +49,7 @@ public class LevelComplete : MonoBehaviour {
 
             ShowScore();
         }
+        // if last level
         else
         {
             finishPopup.SetActive(true);
@@ -56,6 +61,7 @@ public class LevelComplete : MonoBehaviour {
             ShowScore2();
         }
     }
+    // function to load up next level
     public void NextLevel()
     {
    
@@ -72,8 +78,10 @@ public class LevelComplete : MonoBehaviour {
 
         loadLevel.ChangeLevel();
     }
+    // function to manage score on popup
     private void CheckScore()
     {
+        // getting score which was saved on file
         int checkScore = PlayerPrefs.GetInt("score2");
 
         if(checkScore < GameManager.Instance.Collected)
@@ -81,10 +89,14 @@ public class LevelComplete : MonoBehaviour {
             PlayerPrefs.SetInt("score2", GameManager.Instance.Collected);
         }
     }
+
+    // if the user selects Exit
     public void Exit()
     {
+        // restart time
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        // load main menu
+        SceneManager.LoadScene(SceneNames.MAIN_MENU);
     }
     public void Retry()
     {

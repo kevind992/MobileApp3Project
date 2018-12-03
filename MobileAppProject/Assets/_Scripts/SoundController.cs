@@ -31,10 +31,11 @@ public class SoundController : MonoBehaviour {
     {
         if (clip)
         {
+            // playing audio clip
             audioSource.PlayOneShot(clip);
         }
     }
-
+    // function for creating an instance of the SoundController
     public static SoundController FindSoundController()
     {
         var soundController = FindObjectOfType<SoundController>();
