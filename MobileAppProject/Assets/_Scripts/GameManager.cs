@@ -230,6 +230,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(RespawnDelay);
         player.transform.position = GameManager.instance.RespawnPoint;
         player.gameObject.SetActive(true);
+        healthValue = 1f;
     }
     public void ResetValues()
     {

@@ -11,6 +11,7 @@ TagManager:
   - Checkpoint
   - level1
   - level2
+  - Moving Platform
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,7 @@ public class SoundController : MonoBehaviour {
 
     void Update()
     {
+        // Checking 
         string isSound = PlayerPrefs.GetString("sound");
         if (isSound.Equals("soundon"))
         {

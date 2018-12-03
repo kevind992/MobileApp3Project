@@ -27,7 +27,8 @@ public class MainMenuController : MonoBehaviour
         if (firstPlay.Equals("true"))
         {
             PlayerPrefs.SetString("played", "false");
-            StartCoroutine("Display");
+            Debug.Log(firstPlay);
+            OpenFirstTimePlay();
         }
     }
 
@@ -47,11 +48,6 @@ public class MainMenuController : MonoBehaviour
         {
             Debug.Log("No Level Saved..");
         }
-    }
-    private IEnumerator Display()
-    {
-        yield return new WaitForSeconds(05);
-        OpenFirstTimePlay();
     }
     public void OpenFirstTimePlay()
     {

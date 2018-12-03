@@ -524,6 +524,8 @@ GameObject:
   - component: {fileID: 51146887}
   - component: {fileID: 51146886}
   - component: {fileID: 51146885}
+  - component: {fileID: 51146889}
+  - component: {fileID: 51146888}
   m_Layer: 10
   m_Name: Platform
   m_TagString: Untagged
@@ -590,6 +592,37 @@ Transform:
   m_Father: {fileID: 1092116148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &51146888
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 51146884}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &51146889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 51146884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e14a5743264a84ca1ee20b842b7138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &55732116
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,6 +5497,8 @@ GameObject:
   - component: {fileID: 719188503}
   - component: {fileID: 719188505}
   - component: {fileID: 719188504}
+  - component: {fileID: 719188507}
+  - component: {fileID: 719188506}
   m_Layer: 10
   m_Name: GroundPlatforms2_3
   m_TagString: Untagged
@@ -5573,6 +5608,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28, y: 0.03}
   m_EdgeRadius: 0
+--- !u!114 &719188506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 719188501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e14a5743264a84ca1ee20b842b7138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &719188507
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 719188501}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &720440182
 Prefab:
   m_ObjectHideFlags: 0
@@ -11684,8 +11750,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1640239748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 173.5, y: 1.73, z: 10}
-  m_LocalScale: {x: 3.843, y: 3, z: 1}
+  m_LocalPosition: {x: 173.5, y: 4.266, z: 10}
+  m_LocalScale: {x: 3.843, y: 3.9900002, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -15068,8 +15134,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1950692288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 79.95, y: 3.8443956, z: 4.3577647}
-  m_LocalScale: {x: 7.056, y: 7, z: 0.5}
+  m_LocalPosition: {x: 79.815, y: 3.8443956, z: 4.3577647}
+  m_LocalScale: {x: 7.006608, y: 7, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1018752754}
   m_RootOrder: 4
@@ -15293,8 +15359,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1971864000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 184.27, y: 0.63, z: 9}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 184.197, y: 0.63, z: 9}
+  m_LocalScale: {x: 4.016, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -15368,8 +15434,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1973180175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 83.05, y: 0.054395676, z: 3.8577647}
-  m_LocalScale: {x: 5.852, y: 7, z: 0}
+  m_LocalPosition: {x: 82.918, y: 0.054395676, z: 3.8577647}
+  m_LocalScale: {x: 5.799332, y: 7, z: 0}
   m_Children: []
   m_Father: {fileID: 943275669}
   m_RootOrder: 4

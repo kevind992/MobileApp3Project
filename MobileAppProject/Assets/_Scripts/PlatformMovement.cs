@@ -20,6 +20,7 @@ public class PlatformMovement : MonoBehaviour
     [SerializeField]
     private Transform transformB;
 
+
 	// Use this for initialization
 	void Start () {
         posA = childTransform.localPosition;
@@ -45,5 +46,22 @@ public class PlatformMovement : MonoBehaviour
     {
         nexPosition = nexPosition != posA ? posA : posB;
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision Detected..");
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("FLoating...");
+            collision.collider.transform.SetParent(transform);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            collision.collider.transform.SetParent(null);
+        }
+    }
+
 }
