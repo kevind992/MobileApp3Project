@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483adcc5e33e08e448f0ae8c1b463152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   score: {fileID: 0}
   respawnDelay: 1
   respawnPoint: {x: -7.17, y: -3.214, z: 0}
@@ -60,4 +61,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  player: {fileID: 0}

@@ -1813,7 +1813,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 1757856681146168}
   pauseButton: {fileID: 1952368843973674}
-  score: {fileID: 114183782179813738}
+  finishPopup: {fileID: 0}
+  score1: {fileID: 0}
+  score2: {fileID: 0}
 --- !u!114 &114548564468808950
 MonoBehaviour:
   m_ObjectHideFlags: 1
